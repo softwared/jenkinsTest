@@ -6,7 +6,7 @@ pipeline {
         echo 'Building !!!'
       }
     }
-    stage('PCC Test') {
+    stage('Test') {
       parallel {
         stage('PCC Test') {
           steps {
