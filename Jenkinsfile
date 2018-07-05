@@ -1,9 +1,30 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('re-Build') {
       steps {
-        mail(subject: 'glop', body: 'glopglop')
+        echo 'Building !!!'
+      }
+    }
+    stage('PCC Test') {
+      parallel {
+        stage('PCC Test') {
+          steps {
+            sleep 3
+            echo 'PCC Tests over!'
+          }
+        }
+        stage('Susan Tests') {
+          steps {
+            sleep 2
+            echo 'Susan Tests Over!'
+          }
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploy!'
       }
     }
   }
